@@ -1,0 +1,3 @@
+* Matching Engine 
+  - Specify self-trade prevention behavior to avoid two orders from the same user filling one another 
+  - Order Lifecycle: received, open, done(filled, canceled)
