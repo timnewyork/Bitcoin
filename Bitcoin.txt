@@ -1,0 +1,21 @@
+Bitcoin
+
+* Bitcoin block size is 1 MB, and transaction confirmation takes long time to add to blockchain. 
+
+*** How Bitcoin transaction work **(https://www.bitcoin.com/info/how-bitcoin-transactions-work)
+  - e.g. A send bitcoin to B.  
+
+1. It requires A's bitcoin address (public key), BTC amount and B's bitcoin address(public key). 
+2. A uses private key to sign a message with transaction-specific details and send to blockchain.
+3. Miners confirm transaction by calculating block hash and append to blockchain.
+
+*** How Bitcoin mining work **(https://www.coindesk.com/information/how-bitcoin-mining-works/)
+
+1. People sends bitcoins to each other to create transactions
+2. The bitcoin network deals with this by collecting all of the transactions made during a set period into a list, called a block.
+3. Miner confirm and calculate blocks to hash and append to blockchain which is a general ledger.
+4. Miner rewards bitcoin for calculating certain pattern hash
+
+* What if people stop mining or all bitcoins are mined
+  - No transaction will be confirmed. 
+  - High transaction fee may still maintain mining activities. 
