@@ -1,6 +1,11 @@
-Bitcoin
+Bitcoin & Ethereum
 
-* Bitcoin block size is 1 MB, and transaction confirmation takes long time to add to blockchain. 
+*** BlockChain is immutable and distributed.**
+
+--------------------------------------------
+**Bitcoin** 
+--------------------------------------------
+* Bitcoin block size is 1 MB, mine a block is average 10 min and a txn needs 6 confirmation which is 1 hour.
 
 *** How Bitcoin transaction work **(https://www.bitcoin.com/info/how-bitcoin-transactions-work)
   - e.g. A send bitcoin to B.  
@@ -19,3 +24,67 @@ Bitcoin
 * What if people stop mining or all bitcoins are mined
   - No transaction will be confirmed. 
   - High transaction fee may still maintain mining activities. 
+
+* Segregated Witness (SegWit2x)
+   - makes the amount of data that needs to be verified in each block smaller, by removing signature data from the block of data that needs to be processed in each transaction, and having it attached in an extended block. Signature data has been estimated to account for up to 65% of data processed in each block, so this is not an insignificant technological shift. 
+
+* Lightning Network
+
+--------------------------------------------
+**Ethereum**
+--------------------------------------------
+* Ethereum aims to be a decentralized internet and app store. With ethereum, servers and clouds are replaced by thousands of so-called "nodes" run by volunteers from across the globe (thus forming a "world computer" to replace third parties). Volunteers will be rewarded ether. either doesn't have Bitcoin's 21 million limit. Eighteen million ether, at most, are mined per year. 
+
+* Ethereum Blockchain 
+   - Similar to bitcoin's, in that it is a shared record of the entire transaction history. Every node on the network stores a copy of this history. The big difference with ethereum is that its nodes store the most recent state of each smart contract, in addition to all of the ether transactions.
+
+* Ethereum Virtual Machine (EVM) handles the state of the ledger and runs smart contracts. 
+
+* Smart Contract
+   - Its digital contract or program do the IfThisThenThat logic. Take inputs and do logical implementation on Blockchain ( **IMMUTABLE **, **DISTRIBUTED**). e.g. of KickStarter  (https://www.youtube.com/watch?v=ZE2HxTmxfrI)
+   - Ethereum replaces bitcoin's more restrictive language with a language that allows developers to write their own programs (smart contract).
+
+* **Shifting from proof of work to proof of stake** (PoS)
+   - PoS: the creator of a new block is chosen in a deterministic way, depending on its wealth, also defined as stake.
+   - No block reward, the miners only take the transaction fee.
+   - PoS reduces electricity consumption. But it may have security issue.
+
+* How to mine Ethereum (https://www.coindesk.com/information/how-to-mine-ethereum/)
+
+1. Choose hardware CUP or GPU. GPU has high hash rate and the only option for ether miners.
+2. Install Ethereum software client to connect to network as a node. Then you can deploy your smart contract and send transaction.
+3. Testing.
+4. Install Ethminer
+5. Join mining pool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
