@@ -1,3 +1,18 @@
+* GDAX API: https://docs.gdax.com/?javascript#introduction
+* GDAX Client API: https://github.com/coinbase/gdax-node/tree/master
+
 * Matching Engine 
-  - Specify self-trade prevention behavior to avoid two orders from the same user filling one another 
+  - Set self-trade prevention behavior to avoid two orders from the same user filling one another 
   - Order Lifecycle: received, open, done(filled, canceled)
+
+* Fee 
+  - 0.25% taker fee for BTC, 0.3% taker fee for ETH & LTC 
+  - no deposit and withdraw fee
+
+* Data Center
+  - Amazon US East N. Virginia AWS
+
+* Sandbox
+  - Test API connectivity and web trading. Allow fake funds for testing. 
+  - Seprate from production but provide all functionality of the production.
+
