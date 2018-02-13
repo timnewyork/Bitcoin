@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {GdaxClientService} from '../service/gdax-client.service';
+import {BinanceClientService} from '../service/binance-client.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,13 @@ import {GdaxClientService} from '../service/gdax-client.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private gdax;
+  public data;
 
-  constructor(gdaxClient: GdaxClientService) {
+  constructor(gdaxClient: GdaxClientService,
+              binanceClient: BinanceClientService) {
+    gdaxClient.getCoinbaseAccounts().then(res => {
+      this.data = res;
+    });
   }
 
 }

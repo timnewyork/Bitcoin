@@ -3,42 +3,47 @@ import {ProductInfo} from '../model/gdax-client';
 
 @Injectable()
 export class GdaxClientService {
-  private gdax;
+  private gdaxApi;
+  private gdaxAccount;
   private publicClient;
   private privateClient;
 
   constructor() {
-    this.gdax = require('gdax');
-    this.publicClient = new this.gdax.PublicClient();
+    this.gdaxApi = require('gdax');
+    this.gdaxAccount = require('../../../../gdax.json');
 
-    const auth = new GdaxPrivateClientAuthentication();
-    this.privateClient = new this.gdax.AuthenticatedClient(
-      auth.authenticator.get(GdaxPrivateClientAPIPermission.VIEW).key,
-      auth.authenticator.get(GdaxPrivateClientAPIPermission.VIEW).secret,
-      auth.authenticator.get(GdaxPrivateClientAPIPermission.VIEW).passphrase,
-      auth.apiURI
-    );
+    this.publicClient = new this.gdaxApi.PublicClient();
+
+    const auth = new GdaxPrivateClientAuthentication(this.gdaxAccount);
+    const viewAuth = auth.authenticator.get(GdaxPrivateClientAPIPermission.VIEW);
+    this.privateClient = new this.gdaxApi.AuthenticatedClient(viewAuth.key, viewAuth.secret, viewAuth.passphrase, auth.apiURI);
   }
 
   public getProducts(): Promise<ProductInfo[]> {
     return this.publicClient.getProducts();
   }
+
+  public getCoinbaseAccounts(): Promise<Account[]> {
+    return this.privateClient.getCoinbaseAccounts();
+  }
+
 }
 
 class GdaxPrivateClientAuthentication {
   public apiURI = 'https://api.gdax.com';
   public sandboxURI = 'https://api-public.sandbox.gdax.com';
 
-  public authenticator: Map<GdaxPrivateClientAPIPermission, GdaxPrivateClientAPIKeys>;
+  public authenticator: Map<GdaxPrivateClientAPIPermission, GdaxPrivateClientAPIKey> = new Map();
 
-  public constructor () {
-    const viewKeys = null;
-
-    this.authenticator = new Map().set(GdaxPrivateClientAPIPermission.VIEW, viewKeys);
+  public constructor (gdaxAccount: any) {
+    // read api keys from local json
+    gdaxAccount.api_keys.forEach(apiKey => {
+      this.authenticator.set((<any>GdaxPrivateClientAPIPermission)[apiKey.permission], new GdaxPrivateClientAPIKey(apiKey.key, apiKey.secret, apiKey.passphrase));
+    });
   }
 }
 
-class GdaxPrivateClientAPIKeys {
+class GdaxPrivateClientAPIKey {
   public key: string;
   public secret: string;
   public passphrase: string;

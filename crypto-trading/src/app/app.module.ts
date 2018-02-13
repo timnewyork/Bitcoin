@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {GdaxClientService} from '../service/gdax-client.service';
+import {BinanceClientService} from '../service/binance-client.service';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {GdaxClientService} from '../service/gdax-client.service';
     BrowserModule
   ],
   providers: [
-    GdaxClientService
+    GdaxClientService,
+    BinanceClientService
   ],
   bootstrap: [AppComponent]
 })
